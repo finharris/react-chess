@@ -32,7 +32,7 @@ export default function Square(props) {
       piece.position.x === props.column + 1 &&
       piece.position.y === props.row + 1
     ) {
-      p = <Piece content={piece.content}></Piece>;
+      p = <Piece content={piece.content} pieceIcons={props.pieceIcons}></Piece>;
     }
   }
 

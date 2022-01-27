@@ -31,6 +31,9 @@ html {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  border: 0px solid black;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 .row {
@@ -39,10 +42,13 @@ html {
 }
 
 .square {
-  width: 70px;
-  height: 70px;
+  width: 75px;
+  height: 75px;
   position: relative;
-  transition: transform 100ms ease-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 200ms ease-out;
 }
 
 .square[data-focused="true"] {
@@ -50,6 +56,8 @@ html {
   transform: scale(1.05);
   box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.5);
   z-index: 100;
+  transition: border-radius 150ms ease-out;
+  border-radius: 5px;
 }
 
 .square:hover {
@@ -70,6 +78,10 @@ html {
   position: absolute;
   bottom: 0;
   right: 6%;
+}
+
+.piece > img {
+  width: 70px;
 }
 
 .white {
