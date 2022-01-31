@@ -1,13 +1,20 @@
 import "./App.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Grid from "./components/Grid";
 
 function App() {
   const [pieces, setPieces] = useState([]);
 
-  const addPiece = () => {
+  useEffect(() => {
+    loadFen("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR");
+  }, []);
+
+  const loadFen = (fenInput) => {
+    fenInput = fenInput || null;
+    if (fenInput === null) {
+      fenInput = document.querySelector("#fen").value;
+    }
     setPieces([]);
-    const fenInput = document.querySelector("#fen").value;
     let fen = fenInput.split(" ");
     let piecePositions = fen[0].split("");
 
@@ -49,7 +56,7 @@ function App() {
         id='fen'
         // value='rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1'
       />
-      <button onClick={() => addPiece()}>click</button>
+      <button onClick={() => loadFen()}>click</button>
       <Grid pieces={pieces}></Grid>
     </>
   );
