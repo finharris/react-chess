@@ -17,6 +17,21 @@ export default function Grid(props) {
     return;
   });
 
+  const pieceIcons = {
+    pb: require("../assets/images/pieces/pb.png"),
+    pw: require("../assets/images/pieces/pw.png"),
+    bb: require("../assets/images/pieces/bb.png"),
+    bw: require("../assets/images/pieces/bw.png"),
+    nb: require("../assets/images/pieces/nb.png"),
+    nw: require("../assets/images/pieces/nw.png"),
+    rb: require("../assets/images/pieces/rb.png"),
+    rw: require("../assets/images/pieces/rw.png"),
+    kb: require("../assets/images/pieces/kb.png"),
+    kw: require("../assets/images/pieces/kw.png"),
+    qb: require("../assets/images/pieces/qb.png"),
+    qw: require("../assets/images/pieces/qw.png"),
+  };
+
   return (
     <>
       <div className='grid'>
@@ -27,6 +42,7 @@ export default function Grid(props) {
             pieces={props.pieces}
             focused={focused}
             handleFocusEvent={handleFocusEvent}
+            pieceIcons={pieceIcons}
           ></Row>
         ))}
       </div>

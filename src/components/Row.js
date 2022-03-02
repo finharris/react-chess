@@ -15,6 +15,7 @@ export default function Row(props) {
             pieces={props.pieces}
             focused={props.focused}
             handleFocusEvent={props.handleFocusEvent}
+            pieceIcons={props.pieceIcons}
           ></Square>
         ))}
       </div>
