@@ -33,6 +33,7 @@ export default function Square(props) {
       piece.position.y === props.row + 1
     ) {
       p = <Piece content={piece.content} pieceIcons={props.pieceIcons}></Piece>;
+      break;
     }
   }
 

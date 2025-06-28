@@ -48,6 +48,26 @@ function App() {
     }
   };
 
+  const handleMovePiece = (oldPos, newPos) => {
+    // remove oldpos piece from pieces and add new pos piece with same content but new pos
+
+    for (const piece of pieces) {
+      // if the piece matches the position for the old piece
+      if (
+        piece.position.x === oldPos.x + 1 &&
+        piece.position.y === oldPos.y + 1
+      ) {
+        // check if new position has something already
+        let newPieces = pieces.filter((p) => p !== piece);
+        newPieces.push({
+          position: { x: newPos.x + 1, y: newPos.y + 1 },
+          content: piece.content,
+        });
+        setPieces(newPieces);
+      }
+    }
+  };
+
   return (
     <>
       <input
@@ -57,7 +77,10 @@ function App() {
         // value='rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1'
       />
       <button onClick={() => loadFen()}>click</button>
-      <Grid pieces={pieces}></Grid>
+      <Grid
+        pieces={pieces}
+        handleMovePiece={(oldPos, newPos) => handleMovePiece(oldPos, newPos)}
+      ></Grid>
     </>
   );
 }

@@ -7,6 +7,28 @@ export default function Grid(props) {
   const rows = [0, 1, 2, 3, 4, 5, 6, 7];
 
   const handleFocusEvent = (x, y) => {
+    const previouslyFocusedPos = focused;
+
+    // check something was selected before
+    if (previouslyFocusedPos !== null) {
+      const grid = document.querySelector(".grid");
+      const previouslyFocused =
+        grid.children[previouslyFocusedPos.position.y].children[
+          previouslyFocusedPos.position.x
+        ];
+
+      // check if the previously focused square had a piece
+      if (previouslyFocused.children.length > 0) {
+        props.handleMovePiece(
+          {
+            x: previouslyFocusedPos.position.x,
+            y: previouslyFocusedPos.position.y,
+          },
+          { x: x, y: y }
+        );
+      }
+    }
+
     setFocused({ position: { x: x, y: y } });
   };
 
